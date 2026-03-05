@@ -1,0 +1,11 @@
+#admin-dashboard {
+    background: #6f42c1;
+    max-width: 18rem;
+    transition: .5s ease;
+}
+
+#admin-dashboard:hover {
+    transform: scale(.98);
+    transition: .5s ease;
+    background: #3f52c2;
+}

@@ -1,0 +1,8 @@
+.customer-list{
+    transition: .75s ease;
+}
+.customer-list:hover{
+    transform: scale(1.05);
+    transition: .75s ease;
+    cursor: pointer;
+}

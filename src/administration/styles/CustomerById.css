@@ -1,0 +1,7 @@
+.styleHover{
+    transition: .75s ease-in-out;
+}
+.styleActive:hover{
+    transform: scale(1.05);
+    transition: .75s ease-in-out;
+}
