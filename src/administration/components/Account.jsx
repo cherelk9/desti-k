@@ -1,26 +1,63 @@
-const Account =  ({users, children}) => {
+const Account =  ({users}) => {
+
+    const style = {
+        container: {padding: '40px', backgroundColor: '#ffffff', minHeight: '100%'},
+        header: {color : '007bff' , fontWeight: 'bold', marginBottom: '30px'},
+        card: {borderRadius: '12px' , border: '1px solid #e9ecef', boxShadow: '0 4px 6px rgba(0,0,0,0.05)'},
+        avatar: {
+            width: '80px',
+            height: '80px',
+            backgroundColor: '#007bff',
+            color: 'white',
+            fontSize: '32px',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0 auto 15px',
+        },
+        roleBadge: {
+            backgroundColor: '#e7f1ff',
+            color: '#007bff',
+            padding: '5px 15px',
+            borderRadius: '20px',
+            fontSize: '14px',
+        }
+    }
 
     return (
-        <div className="container">
-            {children}
+        <div style={style.container}>
+            <h2 style={style.header}>
+                Mon profil
+            </h2>
 
-            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div className="modal-dialog ">
-                    <div className="modal-content bg-primary">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5 text-danger" id="exampleModalLabel">info de l'utilisateur</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+            <div className="row">
+                <div className="col-md-4 text-center">
+                    <div className="card p-4" style={style.card}>
+                        <div style={style.avatar}>{users.name.charAt(0).toUpperCase()}</div>
+                        <h4 className="fw-bold">{users.name}</h4>
+                        <span style={style.roleBadge} className="fw-bold">{users.role}</span>
+                    </div>
+                </div>
+
+                <div className="col-md-8">
+                    <div className="card p-4 h-100" style={style.card}>
+                        <h5 className="fw-bold mb-4 border-bottom pd-2">Details du compte</h5>
+                        <div className="mb-3">
+                            <label className="text-muted small d-block">NOM D'UTILISATEUR</label>
+                            <span className="fw-semibold"> @{users.name || 'destik_user'}</span>
                         </div>
-                        <div className="modal-body">
-                            <h5 className=" fs-6 text-light">username : {users.name}</h5>
-                            <h5 className=" fs-6 text-light">password : {users.password}</h5>
-
+                        <div className="mb-3">
+                            <label className="text-muted small d-block">EMAIL</label>
+                            <span className="fw-semibold"> contact@desti-k</span>
                         </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
-
+                        <div className="mb-3">
+                            <label className="text-muted small d-block">PASSWORD</label>
+                            <span className="fw-semibold"> {users.password || ' null '}</span>
+                        </div>
+                        <div className="mb-3">
+                            <label className="text-muted small d-block">DERNIERE ACTIVITE</label>
+                            <span className="fw-semibold">en ligne maintenant</span>
                         </div>
                     </div>
                 </div>

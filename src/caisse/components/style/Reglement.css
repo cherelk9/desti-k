@@ -1,0 +1,25 @@
+@media print {
+    .no-print, .sidebar, .navbar, .btn {
+        display: none !important;
+    }
+
+
+    .printable-area{
+        border: none !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+    }
+}
+
+.printable-area{
+    display: none;
+}
+
+@media print {
+    .printable-area{
+        display: block;
+    }
+}

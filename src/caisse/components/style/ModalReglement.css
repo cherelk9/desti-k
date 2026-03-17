@@ -1,0 +1,27 @@
+.btn-outline-orange{
+    color: #ff6600;
+    border-color: #ff6600;
+    font-weight: bold;
+    font-family: "JetBrains Mono ExtraBold";
+}
+
+.btn-outline-orange:hover{
+    background-color: #ff6600;
+    color: #fff;
+    font-weight: bold;
+    font-family: "JetBrains Mono ExtraBold";
+}
+
+.btn-outline-yellow{
+    color: #ffcc00;
+    border-color: #ffcc00;
+    font-weight: bold;
+    font-family: "JetBrains Mono ExtraBold";
+}
+
+.btn-outline-yellow:hover{
+    background-color: #ffcc00;
+    color: #fff;
+    font-weight: bold;
+    font-family: "JetBrains Mono ExtraBold";
+}

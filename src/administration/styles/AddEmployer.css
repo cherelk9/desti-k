@@ -1,0 +1,10 @@
+.colum-value{
+    transition: .75s ease-in-out;
+}
+.colum-value:hover{
+    transform: scale(1.09);
+    transition: .75s ease-in-out;
+    text-shadow: 10px 10px 10px #000;
+    font-weight: bold;
+
+}

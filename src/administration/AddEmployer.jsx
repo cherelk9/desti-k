@@ -4,6 +4,10 @@ import {useState} from "react";
 import {Datas} from "../connexion/utils/datas"
 import Button from "./components/Button";
 
+import './styles/AddEmployer.css'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCancel} from "@fortawesome/free-solid-svg-icons";
+
 
 function AddEmployer({searchTerm}) {
 
@@ -52,20 +56,22 @@ function AddEmployer({searchTerm}) {
         <div className="container">
 
             {/**title ******************************************/}
-            <h2 className="py-5"> Employer list</h2>
+            <h2 className="pb-4"> Employer list</h2>
+
+            <Button onClick={() => setIsOpen(true)}
+                    className="btn btn-primary "
+            >
+                Add Employer
+            </Button>
 
             {/****container ***************************************/}
-            <div className="row">
+            <div className="container-fluid">
 
                 {/***part 1 add new user button **********************/}
-                <div className="col-3">
+                <div className="p-3">
 
                     {/***add new user button ************************************************/}
-                    <Button onClick={() => setIsOpen(true)}
-                            className="btn btn-primary "
-                    >
-                        Add Employer
-                    </Button>
+
 
 
                     {/** new user form ********************************************************************/}
@@ -76,18 +82,18 @@ function AddEmployer({searchTerm}) {
                     >
 
                         {/********formulaire header ********************************/}
-                        <h2 style={{textAlign: 'center'}}> add new employer </h2>
+                        <h2 style={{textAlign: 'center'}}> add new employer <FontAwesomeIcon icon={faCancel}/> </h2>
 
 
                     </AddForm>
                 </div>
 
                 {/** table how show all employer information***********************************/}
-                <div className="col-8">
+                <div>
                     <table className="table table-striped">
                         <thead>
-                        <tr>
-                            <th scope="col" > # </th>
+                        <tr className="colum-value">
+                            <th scope="col"> # </th>
                             <th scope="col">name</th>
                             <th scope="col">Role</th>
                             <th scope="col">password</th>
@@ -97,7 +103,9 @@ function AddEmployer({searchTerm}) {
                         <tbody>
                         {employer.map((item) =>{
                             return (
-                                <tr key={item.id}>
+                                <tr key={item.id}
+                                    className="colum-value"
+                                >
                                     <th scope="row">{item.id}</th>
                                     <td>{item.name}</td>
                                     <td>{item.role}</td>

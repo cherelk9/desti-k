@@ -25,15 +25,15 @@ const Connexion = () => {
        if (userFound) {
             if (userFound.role === "Accueil") {
                 localStorage.setItem("userConnecte", JSON.stringify(userFound))
-                navigate("/accueil");
+                navigate("/accueil", {state: {message: "Bienvenue dans l'espace Accueil"}});
             }
             else if(userFound.role === "Admin"){
                 localStorage.setItem("userConnecte", JSON.stringify(userFound))
-                navigate("/admin");
+                navigate("/admin", {state: {message: "Bienvenue dans l'espace administration"}});
             }
             else if (userFound.role === "Caisse") {
                 localStorage.setItem("userConnecte", JSON.stringify(userFound))
-                navigate("/caisse");
+                navigate("/caisse", {state: {message: "Bienvenue a la caisse "}});
             }
             setError(true);
         }else{
