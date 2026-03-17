@@ -67,10 +67,6 @@ const AdminDashboard = () => {
                 return <Customers searchTerm={searchTerm} />;
             case 'settings':
                 return <div className="p-5 text-center">Paramètres de l'application</div>;
-            case 'account':
-                return (
-                    <Account users={users}/>
-                );
             case 'addExamen': return <ListeExamens/>
             case 'forum': return <DestiKForum currentUserService={getServiceLabel()} />;
             case'deconnexion': return;
@@ -84,7 +80,6 @@ const AdminDashboard = () => {
         { id: 'customers', icon: faUsers, label: 'Customers' },
         { id: 'integrations', icon: faSync, label: 'Integrations' },
         { id: 'settings', icon: faGear, label: 'Settings' },
-        { id: 'account', icon: faUserCircle, label: 'Account' },
         { id: 'addEmployer', icon: faPlus, label: 'Add Employer' },
         { id: 'error', icon: faExclamationTriangle, label: 'Error' },
         {id:'addExamen', icon: faClinicMedical, label: 'Add Examen' },

@@ -1,0 +1,372 @@
+/* ═══════════════════════════════════════
+   RETOUR / ANNULATION DE TRANSACTION
+═══════════════════════════════════════ */
+
+.ret-root {
+    padding: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ── En-tête ── */
+.ret-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.ret-header-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #fee2e2;
+    color: #dc2626;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.ret-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.ret-subtitle {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* ── Barre de recherche ── */
+.ret-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: border-color 0.2s;
+}
+
+.ret-search-bar:focus-within {
+    border-color: #185FA5;
+}
+
+.ret-search-icon {
+    color: #9ca3af;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.ret-search-input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #111827;
+    width: 100%;
+    background: transparent;
+}
+
+.ret-search-input::placeholder {
+    color: #9ca3af;
+}
+
+/* ── Panel de confirmation ── */
+.ret-confirm-panel {
+    background: #fff;
+    border: 1.5px solid #fbbf24;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(251,191,36,0.15);
+}
+
+.ret-confirm-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #92400e;
+    font-size: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #fde68a;
+}
+
+.ret-confirm-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.ret-confirm-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+.ret-info-key {
+    font-size: 11px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.ret-info-val {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.ret-amount {
+    color: #059669;
+    font-size: 16px;
+}
+
+/* ── Motif ── */
+.ret-motif-block {
+    margin-bottom: 16px;
+}
+
+.ret-motif-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+.ret-required {
+    color: #dc2626;
+    margin-left: 2px;
+}
+
+.ret-motif-input {
+    width: 100%;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: #111827;
+    resize: vertical;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.ret-motif-input:focus {
+    border-color: #185FA5;
+}
+
+.ret-motif-input::placeholder {
+    color: #9ca3af;
+}
+
+/* ── Boutons confirmation ── */
+.ret-confirm-btns {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.ret-btn-cancel {
+    padding: 10px 18px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fff;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.ret-btn-cancel:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.ret-btn-valider {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #dc2626;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.ret-btn-valider:hover:not(:disabled) {
+    background: #b91c1c;
+}
+
+.ret-btn-valider:disabled {
+    background: #fca5a5;
+    cursor: not-allowed;
+}
+
+/* ── Liste des transactions ── */
+.ret-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ret-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.ret-item:hover {
+    border-color: #185FA5;
+    box-shadow: 0 2px 8px rgba(24,95,165,0.1);
+}
+
+.ret-item.selected {
+    border-color: #dc2626;
+    background: #fff5f5;
+    box-shadow: 0 2px 8px rgba(220,38,38,0.1);
+}
+
+.ret-item-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ret-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #dbeafe;
+    color: #185FA5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.ret-item-name {
+    margin: 0;
+    font-weight: 700;
+    color: #111827;
+    font-size: 14px;
+}
+
+.ret-item-exam {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: #6b7280;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ret-item-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ret-badge-mode {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.ret-badge-mode.green {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.ret-badge-mode.orange {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.ret-item-montant {
+    font-weight: 800;
+    color: #111827;
+    font-size: 14px;
+    min-width: 100px;
+    text-align: right;
+}
+
+.ret-item-date {
+    font-size: 11px;
+    color: #9ca3af;
+    min-width: 90px;
+    text-align: right;
+}
+
+/* ── État vide ── */
+.ret-empty {
+    text-align: center;
+    padding: 48px 20px;
+    color: #9ca3af;
+    font-size: 14px;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 1.5px dashed #e5e7eb;
+}
+
+/* ── Section annulées ── */
+.ret-annulees-section {
+    margin-top: 20px;
+    padding: 12px 16px;
+    background: #ecfdf5;
+    border: 1px solid #6ee7b7;
+    border-radius: 10px;
+}
+
+.ret-annulees-title {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #065f46;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .ret-confirm-info-grid {
+        grid-template-columns: 1fr;
+    }
+    .ret-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .ret-item-right {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}

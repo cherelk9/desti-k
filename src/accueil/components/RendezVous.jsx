@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCalendarAlt, faCalendarPlus, faTrash, faClock,
     faUser, faEdit, faCheck, faTimes, faSearch,
-    faChevronLeft, faChevronRight, faFilter,
+    faChevronLeft, faChevronRight,
     faExclamationCircle, faStethoscope, faHeartbeat,
     faClipboardList
 } from "@fortawesome/free-solid-svg-icons";

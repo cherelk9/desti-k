@@ -74,7 +74,7 @@ const FactureEnAttente = ({list, onRegler}) => {
                                         <td>
                                             <span className="badge bg-info-subtle text-info border border-info-subtle pc-3">{abregerExamen(item.nameExam)}</span>
                                         </td>
-                                        <td className="fw-bold text-dark">{item.total.toLocaleString()} Fcfa</td>
+                                        <td className="fw-bold text-dark">{Number(item.montant ?? item.total ?? 0).toLocaleString('fr-FR')} Fcfa</td>
                                         <td>
                                             <span className={`badge ${item.mode === 'Espece' ? 'bg-success' : 'bg-warning'} px-2`}>
                                                 <FontAwesomeIcon  icon={item.mode === 'Espece'? faMoneyBill1Wave : faMobileAlt} className="me-1"/>
@@ -87,7 +87,7 @@ const FactureEnAttente = ({list, onRegler}) => {
                                                 <FontAwesomeIcon icon={faEye} className='me-1' /> voir
                                             </Button>
                                             <Button className="btn btn-sm btn-success rounded-pill me-2"
-                                                    onClick={()=>onRegler(item.id, 'Espece')}
+                                                    onClick={() => onRegler(String(item.id))}
                                             >
                                                 <FontAwesomeIcon icon={faEye} className='me-1' /> Regler
                                             </Button>

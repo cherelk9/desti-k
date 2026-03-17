@@ -1,25 +1,322 @@
+/* ══════════════════════════════════
+   INTERFACE (écran uniquement)
+══════════════════════════════════ */
 @media print {
-    .no-print, .sidebar, .navbar, .btn {
-        display: none !important;
-    }
+    body * { visibility: hidden; }
+    .print-only, .print-only * { visibility: visible !important; }
+    .print-only { position: fixed; top: 0; left: 0; width: 100%; }
+}
 
+.rgl-root { padding: 1.5rem; background: #f5f5f4; min-height: 100vh; }
 
-    .printable-area{
-        border: none !important;
-        position: absolute;
-        top: 0;
-        left: 0;
+.rgl-alert {
+    display: flex; align-items: center; gap: 10px;
+    background: #fff7ed; border: 1px solid #fed7aa;
+    border-left: 4px solid #f97316;
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 13px; color: #9a3412;
+    margin-bottom: 1rem;
+}
+
+.rgl-card {
+    background: #fff; border: 0.5px solid rgba(0,0,0,0.12);
+    border-radius: 12px; padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+}
+.rgl-card-header {
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 0.5px solid rgba(0,0,0,0.1);
+    padding-bottom: 1rem; margin-bottom: 1.25rem;
+}
+.rgl-step-badge {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #dbeafe; color: #1e4fd8;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 500; flex-shrink: 0;
+}
+.rgl-section-title { font-size: 15px; font-weight: 500; margin: 0; }
+.rgl-section-sub   { font-size: 12px; color: #6b7280; margin: 2px 0 0; }
+.rgl-new-badge {
+    margin-left: auto; background: #dcfce7; color: #166534;
+    border-radius: 20px; padding: 3px 10px;
+    font-size: 11px; font-weight: 500;
+    animation: rgl-pulse 1.5s ease-in-out 4;
+}
+@keyframes rgl-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+.rgl-summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+.rgl-metric {
+    background: #f9fafb; border-radius: 8px; padding: 0.75rem 1rem;
+    display: flex; flex-direction: column; gap: 4px;
+}
+.rgl-metric-label { font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; }
+.rgl-metric-value { font-size: 14px; font-weight: 500; }
+.rgl-highlight    { color: #185FA5; font-size: 17px !important; }
+
+.rgl-examens-list {
+    background: #f0f9ff; border-radius: 8px;
+    padding: 0.75rem 1rem; margin-top: 0.25rem;
+}
+.rgl-examens-title {
+    font-size: 12px; font-weight: 500; color: #185FA5;
+    margin: 0 0 0.5rem; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.rgl-examen-row {
+    display: flex; justify-content: space-between;
+    padding: 5px 0; border-bottom: 0.5px solid rgba(24,95,165,0.12);
+    font-size: 13px;
+}
+.rgl-examen-row:last-child { border-bottom: none; }
+.rgl-examen-name  { color: #374151; }
+.rgl-examen-price { font-weight: 500; color: #185FA5; }
+
+.rgl-paiement-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 8px; margin-bottom: 1.25rem;
+}
+.rgl-paiement-option {
+    border: 0.5px solid rgba(0,0,0,0.15); border-radius: 8px;
+    padding: 12px 8px; cursor: pointer; text-align: center;
+    background: #fff; transition: all 0.15s ease;
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+}
+.rgl-paiement-option:hover:not(:disabled) { background: #f9fafb; }
+.rgl-paiement-option.selected { border: 1.5px solid #185FA5; background: #eff6ff; }
+.rgl-paiement-option:disabled { opacity: 0.5; cursor: default; }
+.rgl-paiement-icon  { font-size: 20px; }
+.rgl-paiement-label { font-size: 12px; font-weight: 500; }
+.rgl-paiement-option.selected .rgl-paiement-label { color: #185FA5; }
+.rgl-paiement-sub   { font-size: 10px; color: #9ca3af; }
+
+.rgl-btn-valider {
+    width: 100%; padding: 13px;
+    background: #185FA5; color: #fff; border: none;
+    border-radius: 8px; font-size: 14px; font-weight: 500;
+    cursor: pointer; display: flex; align-items: center;
+    justify-content: center; gap: 8px;
+    transition: opacity 0.15s, transform 0.1s;
+}
+.rgl-btn-valider:hover:not(:disabled) { opacity: 0.9; }
+.rgl-btn-valider:active:not(:disabled){ transform: scale(0.99); }
+.rgl-btn-valider:disabled { background: #059669; cursor: default; }
+
+.rgl-tag-mode {
+    background: #dcfce7; color: #166534; border-radius: 20px;
+    padding: 3px 10px; font-size: 11px; font-weight: 500;
+}
+
+/* Écran vide */
+.rgl-empty {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 3rem 2rem; text-align: center; min-height: 300px;
+}
+.rgl-empty-icon  { font-size: 48px; margin-bottom: 1rem; opacity: 0.4; }
+.rgl-empty-title { font-size: 16px; font-weight: 500; color: #374151; margin: 0 0 6px; }
+.rgl-empty-sub   { font-size: 13px; color: #9ca3af; max-width: 320px; line-height: 1.6; }
+
+.rgl-historique {
+    width: 100%; max-width: 480px; margin-top: 2rem;
+    background: #fff; border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 12px; padding: 1rem 1.25rem;
+}
+.rgl-historique-title {
+    font-size: 12px; font-weight: 500; color: #6b7280;
+    text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.75rem;
+}
+.rgl-historique-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 0; border-bottom: 0.5px solid rgba(0,0,0,0.06);
+}
+.rgl-historique-row:last-child { border-bottom: none; }
+.rgl-historique-info   { display: flex; flex-direction: column; gap: 2px; }
+.rgl-historique-name   { font-size: 13px; font-weight: 500; color: #374151; }
+.rgl-historique-date   { font-size: 11px; color: #9ca3af; }
+.rgl-historique-right  { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+.rgl-historique-montant{ font-size: 13px; font-weight: 600; color: #185FA5; }
+
+/* ══════════════════════════════════
+   REÇU — visible écran (aperçu)
+   mais masqué dans le DOM normal
+══════════════════════════════════ */
+.rgl-print-page {
+    display: none; /* masqué à l'écran, visible uniquement en impression */
+}
+
+/* ══════════════════════════════════
+   IMPRESSION — RÈGLES CRITIQUES
+   Tout sauf .rgl-print-page est masqué
+══════════════════════════════════ */
+@media print {
+
+    /* 1. Masquer TOUT ce qui existe sur la page */
+    body * { visibility: hidden !important; }
+
+    /* 2. Afficher UNIQUEMENT le reçu */
+    .rgl-print-page,
+    .rgl-print-page * { visibility: visible !important; }
+
+    /* 3. Positionner le reçu en haut de la page */
+    .rgl-print-page {
+        display: block !important;
+        position: fixed;
+        top: 0; left: 0;
         width: 100%;
+        background: white;
+        padding: 0;
+        margin: 0;
+    }
 
+    /* 4. Pas de saut de page inattendu */
+    * { page-break-inside: avoid; }
+
+    /* 5. Forcer les couleurs à l'impression */
+    .rgl-print-header,
+    .rgl-print-table thead tr,
+    .rgl-print-total-row {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 }
 
-.printable-area{
-    display: none;
+/* ══════════════════════════════════
+   STYLES DU REÇU IMPRIMÉ
+══════════════════════════════════ */
+
+/* En-tête */
+.rgl-print-header {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #185FA5; color: white;
+    padding: 20px 32px; margin-bottom: 0;
+}
+.rgl-print-logo-zone {
+    display: flex; align-items: center; gap: 14px;
+}
+.rgl-print-logo-circle {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; color: white;
+    border: 2px solid rgba(255,255,255,0.4);
+}
+.rgl-print-labname {
+    font-size: 18px; font-weight: 700; margin: 0; letter-spacing: 0.04em;
+}
+.rgl-print-labsub {
+    font-size: 11px; opacity: 0.8; margin: 3px 0 0;
+}
+.rgl-print-ref-zone { text-align: right; }
+.rgl-print-ref-label {
+    font-size: 10px; opacity: 0.7; margin: 0;
+    text-transform: uppercase; letter-spacing: 0.08em;
+}
+.rgl-print-ref-num { font-size: 20px; font-weight: 700; margin: 0; }
+
+/* Ligne décorative */
+.rgl-print-rule {
+    height: 4px;
+    background: linear-gradient(90deg, #185FA5 0%, #0ea5e9 50%, #185FA5 100%);
 }
 
-@media print {
-    .printable-area{
-        display: block;
-    }
+/* Titre document */
+.rgl-print-doc-title {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 32px 10px;
+    font-size: 15px; font-weight: 700;
+    color: #1a1a2e; letter-spacing: 0.06em;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 16px;
+}
+.rgl-print-paid-badge {
+    background: #dcfce7; color: #166534;
+    border: 1px solid #bbf7d0;
+    border-radius: 20px; padding: 4px 14px;
+    font-size: 12px; font-weight: 700;
+}
+
+/* Grille infos */
+.rgl-print-info-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px; padding: 0 32px; margin-bottom: 20px;
+}
+.rgl-print-info-block { }
+.rgl-print-block-title {
+    font-size: 10px; font-weight: 700; color: #185FA5;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin: 0 0 8px; padding-bottom: 4px;
+    border-bottom: 1.5px solid #185FA5;
+}
+.rgl-print-info-table { width: 100%; border-collapse: collapse; }
+.rgl-print-info-table tr td { padding: 4px 0; }
+.rgl-print-key { font-size: 11px; color: #6b7280; width: 40%; }
+.rgl-print-val { font-size: 12px; font-weight: 500; color: #1a1a2e; }
+.rgl-print-mode {
+    background: #dbeafe; color: #1e40af;
+    border-radius: 4px; padding: 1px 8px;
+    font-size: 11px;
+}
+
+/* Tableau prestations */
+.rgl-print-table {
+    width: calc(100% - 64px); margin: 0 32px;
+    border-collapse: collapse; font-size: 12px;
+}
+.rgl-print-table thead tr {
+    background: #1e3a5f; color: white;
+}
+.rgl-print-th-left {
+    padding: 10px 14px; text-align: left;
+    font-size: 10px; letter-spacing: 0.08em; font-weight: 600;
+}
+.rgl-print-th-right {
+    padding: 10px 14px; text-align: right;
+    font-size: 10px; letter-spacing: 0.08em; font-weight: 600;
+}
+.rgl-print-tr { border-bottom: 1px solid #f1f5f9; }
+.rgl-print-tr:nth-child(even) { background: #f8fafc; }
+.rgl-print-td-left  { padding: 9px 14px; color: #374151; }
+.rgl-print-td-right { padding: 9px 14px; text-align: right; font-weight: 500; color: #374151; }
+.rgl-print-dot { color: #185FA5; margin-right: 6px; }
+.rgl-print-total-row { background: #185FA5 !important; }
+.rgl-print-total-label {
+    padding: 12px 14px; color: white;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+}
+.rgl-print-total-amount {
+    padding: 12px 14px; text-align: right;
+    color: white; font-size: 16px; font-weight: 800;
+}
+
+/* Pied de page avec QR */
+.rgl-print-footer {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding: 20px 32px 24px;
+    margin-top: 16px;
+    border-top: 1px solid #e5e7eb;
+}
+.rgl-print-footer-left { flex: 1; max-width: 65%; }
+.rgl-print-footer-title {
+    font-size: 11px; font-weight: 600; color: #374151; margin: 0 0 4px;
+}
+.rgl-print-footer-sub {
+    font-size: 10px; color: #6b7280; line-height: 1.5; margin: 0 0 8px;
+}
+.rgl-print-footer-contact {
+    font-size: 9px; color: #9ca3af; margin: 0;
+}
+.rgl-print-footer-qr {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.rgl-print-qr-img {
+    width: 90px; height: 90px;
+    border: 1px solid #e5e7eb; border-radius: 6px; padding: 4px;
+}
+.rgl-print-qr-placeholder {
+    width: 90px; height: 90px;
+    border: 1px dashed #d1d5db; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: #9ca3af;
+}
+.rgl-print-qr-label {
+    font-size: 9px; color: #9ca3af; margin: 0; text-align: center;
 }

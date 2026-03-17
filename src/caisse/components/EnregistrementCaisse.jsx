@@ -7,7 +7,7 @@ import {
     faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import {ExamenDisponibles} from "./ExamenDisponibles";
-import Button from "../../administration/components/Button";
+
 
 
   const Enregistrement =({ onPasserAuReglement })=>{
